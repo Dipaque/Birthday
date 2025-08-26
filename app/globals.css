@@ -125,6 +125,12 @@
   animation: float 6s ease-in-out ;
 }
 
+.confetti-wrapper button {
+  background-color: transparent !important;
+  border: none;
+  cursor: pointer;
+}
+
 @keyframes float {
   0% {
     transform: translateY(-100)  rotate(0deg);

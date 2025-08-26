@@ -173,10 +173,12 @@ const Page = () => {
               >
                 {/* Tap Event */}
                 <div
-                  className="absolute font-bold cursor-pointer !bg-transparent bottom-2 z-50 left-1/2 transform -translate-x-1/2 translate-y-0"
+                  className="absolute font-bold cursor-pointer confetti-wrapper bottom-2 z-50 left-1/2 transform -translate-x-1/2 translate-y-0"
                   onClick={() => setIsTapped(true)}
                 >
-                  <ConfettiButton className="!bg-transparent font-bold">
+                  <ConfettiButton options={{
+                    
+                  }}>
                     Tap Here
                   </ConfettiButton>
                 </div>
