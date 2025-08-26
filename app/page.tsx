@@ -1,103 +1,214 @@
-import Image from "next/image";
+"use client";
+import React, { useEffect, useState } from "react";
+import { ConfettiButton } from "@/components/magicui/confetti";
+import Balloon from "@/components/Balloon";
+const Page = () => {
+  const [isTapped, setIsTapped] = useState(false);
 
-export default function Home() {
+  useEffect(() => {
+    if (isTapped) {
+      setTimeout(() => setIsTapped(false), 6000);
+    }
+  }, [isTapped]);
+
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div className="min-h-screen bg-purple-200 flex items-center justify-center p-4">
+      <style jsx>{`
+        @keyframes blink {
+          0%,
+          90% {
+            height: 0.71rem;
+            opacity: 1;
+          }
+          95%,
+          100% {
+            height: 0.125rem;
+            opacity: 0.8;
+          }
+        }
+      `}</style>
+      <div className="bg-purple-300 p-8 rounded-2xl shadow-lg relative overflow-hidden">
+        {/* Background sparkles */}
+        <div className="absolute top-4 left-8 text-white text-2xl opacity-60 animate-pulse">
+          ✦
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+        <div
+          className="absolute top-12 right-12 text-white text-lg opacity-60 animate-pulse"
+          style={{ animationDelay: "0.5s" }}
         >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+          ✦
+        </div>
+        <div
+          className="absolute bottom-20 left-6 text-white text-xl opacity-60 animate-pulse"
+          style={{ animationDelay: "1s" }}
         >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+          ✦
+        </div>
+        <div
+          className="absolute bottom-8 right-8 text-white text-lg opacity-60 animate-pulse"
+          style={{ animationDelay: "1.5s" }}
         >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+          ✦
+        </div>
+        <div
+          className="absolute top-1/3 right-4 text-white text-sm opacity-60 animate-pulse"
+          style={{ animationDelay: "0.8s" }}
+        >
+          ✦
+        </div>
+
+        {/* Happy Birthday Text */}
+        <div className="text-center mb-8">
+          <div
+            role="heading"
+            aria-level={1}
+            className="text-4xl font-black text-purple-700 tracking-wider"
+          >
+            HAPPY
+          </div>
+          <div
+            role="heading"
+            aria-level={2}
+            className="text-4xl font-black text-purple-700 tracking-wider -mt-2"
+          >
+            BIRTHDAY
+          </div>
+          <div
+            role="heading"
+            aria-level={2}
+            className="text-4xl font-black text-purple-700 tracking-wider -mt-2"
+          >
+            JIV
+          </div>
+        </div>
+
+        {/* Animated Panda Container */}
+        <div className="flex justify-center">
+          <div
+            className={`relative ${!isTapped ? "animate-bounce" : ""}`}
+            style={{ animationDuration: "2s" }}
+          >
+            {/* Panda Body */}
+            <div className="relative">
+              {/* Main body */}
+              <div className="w-48 h-44 bg-gray-800 rounded-full relative">
+                {/* Panda face */}
+                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                  <div className="w-32 h-28 bg-white rounded-full relative border-4 border-gray-800">
+                    {/* Ears */}
+                    <div className="absolute -top-6 -left-4 w-12 h-12 bg-gray-800 rounded-full"></div>
+                    <div className="absolute -top-6 -right-4 w-12 h-12 bg-gray-800 rounded-full"></div>
+
+                    {/* Eyes */}
+                    <div className="absolute top-4 left-4">
+                      <div
+                        className="w-8 h-10 rotate-[25deg] bg-gray-800 rounded-full flex items-center justify-center overflow-hidden"
+                        style={{
+                          borderRadius: "50% 50% 50% 50% / 60% 60% 40% 40%",
+                        }}
+                      >
+                        <div
+                          className="w-3 h-3 bg-white rounded-full animate-pulse"
+                          style={{
+                            animation: "blink 3s infinite",
+                            animationTimingFunction: "ease-in-out",
+                          }}
+                        ></div>
+                      </div>
+                    </div>
+                    <div className="absolute top-4 right-4">
+                      <div
+                        className="w-8 h-10 -rotate-[25deg] bg-gray-800 rounded-full flex items-center justify-center overflow-hidden"
+                        style={{
+                          borderRadius: "50% 50% 50% 50% / 60% 60% 40% 40%",
+                        }}
+                      >
+                        <div
+                          className="w-3 h-3 bg-white rounded-full"
+                          style={{
+                            animation: "blink 3s infinite",
+                            animationTimingFunction: "ease-in-out",
+                          }}
+                        ></div>
+                      </div>
+                    </div>
+
+                    {/* Nose */}
+                    <div className="absolute top-10 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-gray-800 rounded-full"></div>
+
+                    {/* Mouth */}
+                    <div className="absolute top-12 left-1/2 transform -translate-x-1/2">
+                      <div className="w-3 h-2 border-b-2 border-gray-800 rounded-full"></div>
+                    </div>
+
+                    {/* Cheeks */}
+                    <div className="absolute top-12 left-1 w-4 h-4 bg-pink-300 rounded-full opacity-80"></div>
+                    <div className="absolute top-12 right-1 w-4 h-4 bg-pink-300 rounded-full opacity-80"></div>
+                  </div>
+                </div>
+
+                {/* Arms */}
+                {/* <div className="absolute top-16 -left-8 w-16 h-20 bg-gray-800 rounded-full transform -rotate-12"></div>
+                <div className="absolute top-16 -right-8 w-16 h-20 bg-gray-800 rounded-full transform rotate-12"></div> */}
+
+                {/* Belly */}
+                <div className="absolute top-20 left-1/2 transform -translate-x-1/2 w-20 h-24 bg-white rounded-full"></div>
+
+                {/* Legs */}
+                <div className="absolute bottom-4 left-8 w-12 h-16 bg-gray-800 rounded-full"></div>
+                <div className="absolute bottom-4 right-8 w-12 h-16 bg-gray-800 rounded-full"></div>
+              </div>
+              <div
+                className={`${
+                  isTapped ? "block transition ease-in duration-200" : "hidden"
+                }`}
+              >
+                <Balloon />
+              </div>
+              {/* Birthday Cake */}
+              <div
+                className={`${
+                  isTapped ? "hidden transition ease-out duration-200" : ""
+                } absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1`}
+              >
+                {/* Tap Event */}
+                <div
+                  className="absolute font-bold cursor-pointer !bg-transparent bottom-2 z-50 left-1/2 transform -translate-x-1/2 translate-y-0"
+                  onClick={() => setIsTapped(true)}
+                >
+                  <ConfettiButton className="!bg-transparent font-bold">
+                    Tap Here
+                  </ConfettiButton>
+                </div>
+                {/* Cake base */}
+                <div className="w-20 h-16 bg-orange-300 rounded-lg border-4 border-gray-800">
+                  {/* Frosting */}
+                  <div className="absolute -top-3 left-0 w-full h-6 bg-pink-300 rounded-t-lg border-l-4 border-r-4 border-t-4 border-gray-800">
+                    {/* Wavy frosting bottom */}
+                    <div className="absolute -bottom-1 left-0 w-full h-2 bg-pink-300"></div>
+                    <div className="absolute -bottom-2 left-1 w-2 h-2 bg-pink-300 rounded-full"></div>
+                    <div className="absolute -bottom-2 left-3 w-2 h-2 bg-pink-300 rounded-full"></div>
+                    <div className="absolute -bottom-2 left-5 w-2 h-2 bg-pink-300 rounded-full"></div>
+                    <div className="absolute -bottom-2 left-7 w-2 h-2 bg-pink-300 rounded-full"></div>
+                    <div className="absolute -bottom-2 left-9 w-2 h-2 bg-pink-300 rounded-full"></div>
+                    <div className="absolute -bottom-2 left-11 w-2 h-2 bg-pink-300 rounded-full"></div>
+                  </div>
+
+                  {/* Candle */}
+                  <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 w-2 h-6 bg-orange-400 rounded-sm border-2 border-gray-800">
+                    {/* Flame */}
+                    <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 w-2 h-3 bg-orange-500 rounded-full animate-pulse">
+                      <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-1 h-2 bg-yellow-400 rounded-full"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
-}
+};
+
+export default Page;
